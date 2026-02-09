@@ -1,0 +1,69 @@
+---
+import Header from "@components/Header.astro";
+import "@fontsource/be-vietnam-pro";
+import "@fontsource-variable/gabarito";
+import { SITE_CONFIG } from "@config";
+import Footer from "@components/Footer.astro";
+
+const {
+  title,
+  description,
+  siteLogo,
+  navLinks,
+  lang,
+  author,
+  socialLinks,
+  socialImage,
+  canonicalURL,
+} = SITE_CONFIG;
+
+// Base site URL for absolute links (required for social previews)
+const siteBase = Astro.site?.toString()
+  || (canonicalURL ? new URL(canonicalURL).origin + "/" : Astro.url.origin + "/");
+
+// Canonical URL for this page
+const canonical = canonicalURL
+  ? new URL(Astro.url.pathname, canonicalURL).toString()
+  : Astro.url.toString();
+
+// Absolute OG image URL
+const ogImgUrl = socialImage?.startsWith("http")
+  ? socialImage
+  : new URL(socialImage || "/tom-og.png", siteBase).toString();
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-pt-16 scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+    <link rel="apple-touch-icon" href="/tom-small.jpg" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={author} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImgUrl} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImgUrl} />
+  </head>
+  <body class="bg-black font-sans">
+    <Header siteLogo={siteLogo} navLinks={navLinks} />
+    <main class="mx-auto max-w-3xl px-5">
+      <slot />
+    </main>
+    <Footer author={author} socialLinks={socialLinks} />
+  </body>
+</html>
