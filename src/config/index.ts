@@ -7,10 +7,11 @@ export const SITE_CONFIG: SiteConfig = {
     "I help businesses scale with structure, clarity and financial control, turning growth into something leaders can steer and teams can run.",
   lang: "en",
   siteLogo: "/tom-small.jpg",
-  navLinks: [
-    { text: "Approach", href: "#approach" },
-    { text: "About", href: "#about" },
-  ],
+    navLinks: [
+        { text: "Work", href: "#work" },
+        { text: "Approach", href: "#approach" },
+      { text: "About", href: "#about" },
+    ],
   socialLinks: [
     { text: "LinkedIn", href: "https://linkedin.com/in/tomschorel" },
   ],
@@ -40,6 +41,52 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
   projects: [],
+    
+    work: {
+      heading: "Work with me",
+      intro:
+        "Short-term advisory and interim support. Clear scope, fast momentum, real outcomes.",
+      email: "tom@tomschorel.com",
+      offers: [
+        {
+          title: "Advisory Session",
+          description: "A focused review to create clarity and a practical next-step plan.",
+          bullets: [
+            "60–90 minutes, structured and direct",
+            "Priorities, trade-offs, and what to do next",
+            "Follow-up notes with recommended actions",
+          ],
+          ctaText: "Book via email",
+          ctaHref: "mailto:tom@tomschorel.com?subject=Advisory%20Session",
+          chips: ["Clarity", "Strategy", "Execution"],
+        },
+        {
+          title: "Ops and Performance Audit",
+          description: "A short engagement to identify bottlenecks, ownership gaps, and reporting that does not drive action.",
+          bullets: [
+            "Operating model and decision flow review",
+            "Reporting, KPI ownership, and cadence",
+            "Practical recommendations leadership can implement immediately",
+          ],
+          ctaText: "Request scope",
+          ctaHref: "mailto:tom@tomschorel.com?subject=Ops%20and%20Performance%20Audit",
+          chips: ["Operating Model", "KPI", "Rhythm"],
+        },
+        {
+          title: "Interim Leadership Support",
+          description: "Hands-on leadership support during growth, change, or transition.",
+          bullets: [
+            "Short-term operational leadership",
+            "Stabilise execution and align teams",
+            "Bring structure without slowing momentum",
+          ],
+          ctaText: "Discuss engagement",
+          ctaHref: "mailto:tom@tomschorel.com?subject=Interim%20Leadership%20Support",
+          chips: ["Leadership", "P&L", "Delivery"],
+        },
+      ],
+    },
+    
   about: {
     description: `
 I operate in environments where growth is real and ambition is high.
