@@ -116,6 +116,7 @@ nav svg {
   color: var(--paper);
   font-size: clamp(.8rem, 1.2vw, 1.1rem);
   letter-spacing: .025em;
+    z-index: 1;
 }
 
 .tram {
