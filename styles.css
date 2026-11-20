@@ -1,0 +1,145 @@
+:root {
+  --paper: #f5f2ea;
+  --ink: #111110;
+  --oxblood: #502a36;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+.cover {
+  display: grid;
+  grid-template-columns: minmax(0, 63fr) minmax(0, 37fr);
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(3rem, 7vh, 6.5rem) 5vw;
+}
+
+h1 {
+  margin: 0 0 clamp(1.75rem, 4.3vh, 3rem);
+  font-size: clamp(4.25rem, 14vw, 16rem);
+  font-weight: 800;
+  line-height: .82;
+  letter-spacing: -.075em;
+}
+
+h1 span { display: block; }
+
+p {
+  max-width: 39ch;
+  margin: 0;
+  font-size: clamp(1.1rem, 1.95vw, 2rem);
+  line-height: 1.36;
+  letter-spacing: -.018em;
+  text-wrap: pretty;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem clamp(1.45rem, 4vw, 4rem);
+  margin-top: clamp(1.5rem, 4.2vh, 3.5rem);
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  min-height: 44px;
+  color: inherit;
+  font-size: clamp(1rem, 1.65vw, 1.6rem);
+  font-weight: 600;
+  text-decoration: none;
+  text-underline-offset: .22em;
+}
+
+nav a:hover, nav a:focus-visible {
+  color: var(--oxblood);
+  text-decoration: underline;
+}
+
+nav a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+nav svg {
+  width: 1.2em;
+  height: 1.2em;
+  flex: none;
+}
+
+/* The two parallel clip edges leave a diagonal band of the page behind them. */
+.portrait-panel {
+  position: relative;
+  isolation: isolate;
+  min-height: 0;
+}
+
+.portrait-panel img {
+  position: absolute;
+  inset: 0 0 auto;
+  display: block;
+  width: 100%;
+  height: 82%;
+  object-fit: cover;
+  object-position: 51% top;
+  clip-path: polygon(0 0, 100% 0, 100% 66%, 0 100%);
+}
+
+.portrait-panel::after {
+  position: absolute;
+  inset: 0;
+  background: var(--oxblood);
+  clip-path: polygon(0 94%, 100% 66.12%, 100% 100%, 0 100%);
+  content: "";
+}
+
+.location {
+  position: absolute;
+  right: clamp(1.25rem, 3.5vw, 4rem);
+  bottom: clamp(1rem, 4vh, 3rem);
+  display: grid;
+  justify-items: end;
+  gap: .35rem;
+  color: var(--paper);
+  font-size: clamp(.8rem, 1.2vw, 1.1rem);
+  letter-spacing: .025em;
+}
+
+.tram {
+  display: block;
+  width: clamp(7rem, 11vw, 11rem);
+  height: auto;
+}
+
+@media (max-width: 700px) {
+  .cover { grid-template-columns: minmax(0, 1fr); }
+  .intro { padding: clamp(3rem, 10vw, 5rem) 7vw 2rem; }
+  h1 { font-size: clamp(3.25rem, 22vw, 8rem); }
+  p { max-width: 33ch; }
+
+  .portrait-panel { aspect-ratio: 1 / 1; min-height: 18rem; }
+  .portrait-panel img {
+    height: 77%;
+    clip-path: polygon(0 0, 100% 0, 100% 69%, 0 100%);
+  }
+  .portrait-panel::after {
+    clip-path: polygon(0 86%, 100% 62%, 100% 100%, 0 100%);
+  }
+  .location {
+    right: 7vw;
+    bottom: 1.25rem;
+  }
+}
